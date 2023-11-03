@@ -1,0 +1,9 @@
+<OrderDetails>
+<OrderNumber>12345</OrderNumber>
+<OrderStatus>Shipped</OrderStatus>
+<CustomerEmail>customer@example.com</CustomerEmail>
+<CustomerName>John Doe</CustomerName>
+<EmailNotificationFlag>true</EmailNotificationFlag>
+<OrderTrackingNumber>TN12345678900</OrderTrackingNumber>
+</OrderDetails>
+
