@@ -1,0 +1,55 @@
+<invoice>
+    <company>
+        <logo>[Your Company Logo]</logo>
+        <name>[Your Company Name]</name>
+        <address>[Your Company Address]</address>
+        <city_state_zip>[City, State, ZIP Code]</city_state_zip>
+        <phone>[Phone Number]</phone>
+        <email>[Email Address]</email>
+        <website>[Website]</website>
+    </company>
+    <invoice_details>
+        <invoice_date>[Date]</invoice_date>
+        <due_date>[Due Date]</due_date>
+        <bill_to>
+            <company_name>OOBEA Corporation</company_name>
+            <address>[OOBEA Corporation Address]</address>
+            <city_state_zip>[City, State, ZIP Code]</city_state_zip>
+            <email>[OOBEA Corporation Email Address]</email>
+            <phone>[OOBEA Corporation Phone Number]</phone>
+        </bill_to>
+        <invoice_number>[Invoice Number]</invoice_number>
+        <payment_terms>[Payment Terms]</payment_terms>
+    </invoice_details>
+    <items>
+        <item>
+            <description>Product/Service 1</description>
+            <quantity>[Quantity]</quantity>
+            <unit_price>[Price]</unit_price>
+            <total>[Total]</total>
+        </item>
+        <item>
+            <description>Product/Service 2</description>
+            <quantity>[Quantity]</quantity>
+            <unit_price>[Price]</unit_price>
+            <total>[Total]</total>
+        </item>
+        <item>
+            <description>Product/Service 3</description>
+            <quantity>[Quantity]</quantity>
+            <unit_price>[Price]</unit_price>
+            <total>[Total]</total>
+        </item>
+    </items>
+    <totals>
+        <subtotal>[Subtotal]</subtotal>
+        <tax>[Tax Amount]</tax>
+        <total_due>[Total Due]</total_due>
+    </totals>
+    <payment_instructions>Please make payment by the due date mentioned above via [Payment Method].</payment_instructions>
+    <thank_you_message>Thank you for your business!</thank_you_message>
+    <issued_by>
+        <name>[Your Name]</name>
+        <title>[Your Title]</title>
+    </issued_by>
+</invoice>
