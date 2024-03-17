@@ -1,0 +1,11 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cxf="http://cxf.component.camel.apache.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <CustomerDetails>
+         <Customer>
+            //Origial Message
+            <CustomerID>ALFKI</CustomerID>
+         </Customer>
+      </CustomerDetails>
+   </soapenv:Body>
+</soapenv:Envelope>
