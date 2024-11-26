@@ -1,0 +1,45 @@
+DATA: lv_access_token   TYPE string,
+      lv_url            TYPE string,
+      lv_payload        TYPE string,
+      lv_response       TYPE string,
+      lv_queue_name     TYPE string VALUE '<Your_Queue_Name>',
+      lv_event_name     TYPE string VALUE 'sap.businesspartner.BusinessPartner.Changed',
+      lv_business_key   TYPE string VALUE '12345', " Replace with your Business Partner ID
+      lo_http_client    TYPE REF TO if_http_client,
+      lv_request_body   TYPE string,
+      lv_token_url      TYPE string VALUE '<Your_OAuth_Token_URL>'.
+
+* Step 1: Get OAuth Token
+  CALL METHOD cl_http_client=>create_by_url
+    EXPORTING
+      url                = lv_token_url
+    IMPORTING
+      client             = lo_http_client.
+  lo_http_client->request->set_header_field( name = 'Content-Type' value = 'application/x-www-form-urlencoded' ).
+  lo_http_client->request->set_cdata( `client_id=<Your_Client_ID>&client_secret=<Your_Client_Secret>&grant_type=client_credentials` ).
+  lo_http_client->send( ).
+  lo_http_client->receive( ).
+  lv_access_token = lo_http_client->response->get_cdata( ). " Extract the token from JSON response
+
+* Step 2: Set Event Mesh URL
+  lv_url = '<Your_Event_Mesh_URL>' && '/messagingrest/v1/queues/' && lv_queue_name && '/messages'.
+
+* Step 3: Create JSON Payload
+  lv_payload = |{ "event": "{ lv_event_name }", "key": "{ lv_business_key }", "data": { "businessPartner": "{ lv_business_key }" } }|.
+
+* Step 4: Publish Event to Event Mesh
+  CALL METHOD cl_http_client=>create_by_url
+    EXPORTING
+      url                = lv_url
+    IMPORTING
+      client             = lo_http_client.
+  lo_http_client->request->set_method( 'POST' ).
+  lo_http_client->request->set_header_field( name = 'Authorization' value = 'Bearer ' && lv_access_token ).
+  lo_http_client->request->set_header_field( name = 'Content-Type' value = 'application/json' ).
+  lo_http_client->request->set_cdata( lv_payload ).
+  lo_http_client->send( ).
+  lo_http_client->receive( ).
+
+* Step 5: Handle Response
+  lv_response = lo_http_client->response->get_cdata( ).
+  WRITE: / 'Response:', lv_response.
