@@ -1,0 +1,26 @@
+import com.sap.gateway.ip.core.customdev.util.Message
+import groovy.xml.MarkupBuilder
+
+def Message processData(Message message) {
+    // Read the flat file content from message body
+    def body = message.getBody(String)  
+    def lines = body.split("\n") // Split by new line
+    def writer = new StringWriter()
+    def xml = new MarkupBuilder(writer)
+
+    // Define XML structure
+    xml.Records {
+        lines.each { line ->
+            xml.Record {
+                Field1(line.substring(0, 10).trim())   // Example: First 10 characters
+                Field2(line.substring(10, 20).trim())  // Next 10 characters
+                Field3(line.substring(20, 30).trim())  // Next 10 characters
+                // Add more fields as per your record structure
+            }
+        }
+    }
+
+    // Set XML as message body
+    message.setBody(writer.toString())
+    return message
+}
