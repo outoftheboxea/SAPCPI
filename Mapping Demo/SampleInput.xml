@@ -1,0 +1,27 @@
+<Employees>
+    <Employee>
+        <Name>John Smith</Name>
+        <ID>EMP001</ID>
+        <Department>HR</Department>
+    </Employee>
+    <Employee>
+        <Name>Alice Johnson</Name>
+        <ID>EMP002</ID>
+        <Department>Finance</Department>
+    </Employee>
+    <Employee>
+        <Name>Robert Brown</Name>
+        <ID>EMP003</ID>
+        <Department>HR</Department>
+    </Employee>
+    <Employee>
+        <Name>Emily Davis</Name>
+        <ID>EMP004</ID>
+        <Department>Finance</Department>
+    </Employee>
+    <Employee>
+        <Name>Michael Wilson</Name>
+        <ID>EMP005</ID>
+        <Department>IT</Department>
+    </Employee>
+</Employees>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <!-- Complex type for an Employee record -->
+    <xs:complexType name="EmployeeType">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="ID" type="xs:string"/>
+            <xs:element name="Department" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- Root element containing a list of Employee entries -->
+    <xs:element name="Employees">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Employee" type="EmployeeType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

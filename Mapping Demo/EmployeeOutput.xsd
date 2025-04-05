@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <!-- Complex type for an Employee in the output (Name and ID only) -->
+    <xs:complexType name="EmployeeBasicType">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="ID" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- Complex type for a Department grouping -->
+    <xs:complexType name="DepartmentType">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="Employee" type="EmployeeBasicType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- Root element containing a list of Department entries -->
+    <xs:element name="Departments">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Department" type="DepartmentType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
